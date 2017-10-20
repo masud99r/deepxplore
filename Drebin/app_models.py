@@ -65,6 +65,7 @@ def Model3(input_tensor=None, load_weights=False, num_features=545334):  # simpl
 
 
 if __name__ == '__main__':
+
     # train the model
     batch_size = 64
     nb_epoch = 10
@@ -72,6 +73,7 @@ if __name__ == '__main__':
 
     # the data, shuffled and split between train and test sets
     feats, nb_train, nb_test, train_generator, test_grnerator = load_data(batch_size, False)
+
     if model_name == '1':
         model = Model1(num_features=len(feats))
         save_model_name = './Model1.h5'
@@ -83,11 +85,11 @@ if __name__ == '__main__':
         save_model_name = './Model3.h5'
     else:
         print(bcolors.FAIL + 'invalid model name, must one of 1, 2 or 3' + bcolors.ENDC)
-
+    '''
     # trainig
     model.fit_generator(train_generator, steps_per_epoch=nb_train // batch_size, epochs=nb_epoch, workers=8,
                         use_multiprocessing=True)
-
+    '''
     # save model
     model.save_weights(save_model_name)
 
